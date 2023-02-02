@@ -13,10 +13,13 @@ public class CharacterController: MonoBehaviour
     private Rigidbody2D _rb;
     private SpriteRenderer _chickenRenderer;
 
+    public Vector3 SpawnSpot { get; set; }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _chickenRenderer = GetComponent<SpriteRenderer>();
+        SpawnSpot = transform.position;
     }
 
     private void Update()
@@ -75,6 +78,13 @@ public class CharacterController: MonoBehaviour
             _cameraTransform.position.z), Time.deltaTime * _cameraSpeed);
 
         _cameraTransform.rotation = Quaternion.identity;
+    }
+
+    public void Die()
+    {
+        // for now, just place the player back at the last checkpoint
+        transform.position = SpawnSpot;
+        _rb.velocity = Vector2.zero;
     }
 
 }
