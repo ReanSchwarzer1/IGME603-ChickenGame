@@ -6,9 +6,18 @@ public class CharacterController: MonoBehaviour
     private GameObject _eggPrefab;
     [SerializeField]
     private float _jumpForce = 10f;
+    [SerializeField]
+    private Transform _cameraTransform;
+    [SerializeField]
+    private float _cameraSpeed = 2f;
     private Rigidbody2D _rb;
+    private SpriteRenderer _chickenRenderer;
 
-    private void Start() => _rb = GetComponent<Rigidbody2D>();
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _chickenRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
@@ -16,6 +25,18 @@ public class CharacterController: MonoBehaviour
         {
             ShootEgg(); //Calling the shootegg() when the player clicks the left-mouse button
         }
+
+        CameraFollow();
+    }
+
+    private void CameraFollow()
+    {
+        _cameraTransform.position = Vector3.Lerp(
+            _cameraTransform.position,
+            new Vector3(transform.position.x, transform.position.y,
+            _cameraTransform.position.z), Time.deltaTime * _cameraSpeed);
+
+        _cameraTransform.rotation = Quaternion.identity;
     }
 
     private void ShootEgg()
@@ -24,6 +45,16 @@ public class CharacterController: MonoBehaviour
         var direction = GetProjectileDirection();
         var projectile = ProjectileEgg(direction);
         ApplyJumpForceOppToShootDir(projectile, direction);
+
+        //code to flip the chicken towards the side they are jumping in / flip the chicken opposite the side they are throwing the eggs
+        if (direction.x > 0)
+        {
+            _chickenRenderer.flipX = true;
+        }
+        else
+        {
+            _chickenRenderer.flipX = false;
+        }
     }
 
     private Vector2 GetProjectileDirection()
@@ -45,5 +76,5 @@ public class CharacterController: MonoBehaviour
     {
         projectile.GetComponent<Rigidbody2D>().velocity = direction * _jumpForce; //applying force to the rigidbody to make the player jump
         _rb.velocity = -direction * _jumpForce; //the rigibody will jump in the direct opposite direction from where the (mousepos var / direction the player clicks in) is
-    } 
+    }
 }
