@@ -394,7 +394,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.28, y: 0.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -456,7 +456,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b8864a5c20b40e24482d58e138f67aa7, type: 3}
   m_Color: {r: 0.7830189, g: 0.7072283, b: 0.25608158, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -475,8 +475,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976190341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.24, y: 0.12, z: 0}
-  m_LocalScale: {x: 12.157971, y: 2.3008, z: 1}
+  m_LocalPosition: {x: 2.137, y: -2.163, z: 0}
+  m_LocalScale: {x: 5.3068, y: 5.3068, z: 5.3068}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -605,12 +605,24 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2096804591544778576, guid: 466de9a636fe52049aaad623a9c04d24, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.6958
+      objectReference: {fileID: 0}
+    - target: {fileID: 2096804591544778576, guid: 466de9a636fe52049aaad623a9c04d24, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.6958
+      objectReference: {fileID: 0}
+    - target: {fileID: 2096804591544778576, guid: 466de9a636fe52049aaad623a9c04d24, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8479
+      objectReference: {fileID: 0}
+    - target: {fileID: 2096804591544778576, guid: 466de9a636fe52049aaad623a9c04d24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.27
+      value: -9.9478
       objectReference: {fileID: 0}
     - target: {fileID: 2096804591544778576, guid: 466de9a636fe52049aaad623a9c04d24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.45
+      value: -2.7722
       objectReference: {fileID: 0}
     - target: {fileID: 2096804591544778576, guid: 466de9a636fe52049aaad623a9c04d24, type: 3}
       propertyPath: m_LocalPosition.z
@@ -644,6 +656,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2096804591544778577, guid: 466de9a636fe52049aaad623a9c04d24, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c2afeb84bac2264478075c828830b7ea, type: 3}
     - target: {fileID: 2096804591544778583, guid: 466de9a636fe52049aaad623a9c04d24, type: 3}
       propertyPath: m_Name
       value: Sawblade
