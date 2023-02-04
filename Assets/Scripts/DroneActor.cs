@@ -4,41 +4,40 @@ using UnityEngine;
 
 public class DroneActor : MonoBehaviour
 {
-    [SerializeField]
-    private float _radiusDeath = 1f;
-    [SerializeField]
-    private float _followDist = 5f;
+    public float _followDist = 20f;
     [SerializeField]
     private Transform _chicken;
     [SerializeField]
-    private float _droneSpeed;
+    private float _droneSpeed = 3f;
+    [SerializeField]
+    private GameObject _droneSynthesizer;
 
+    //private SpriteRenderer _droneSprite;
+
+    //private void Start() => _droneSprite = GetComponent<SpriteRenderer>();
 
     private void Update()
     {
-        float distBetwnPlayerDrone = Vector2.Distance(transform.position, _chicken.position);
-
-        if (distBetwnPlayerDrone < _radiusDeath)
+        if (_followDist > Vector2.Distance(transform.position, _chicken.position))
         {
-            CharacterController playerScript = _chicken.gameObject.GetComponent<CharacterController>();
-            if (playerScript != null)
-            {
-                playerScript.Die();
-            }
+            transform.position = Vector2.MoveTowards(transform.position, _chicken.position, Time.deltaTime * _droneSpeed); //drone wil go towards the playe with a set speed
+            transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime * 5); // MENACING ROTATION HAHAHHAHAH
+
         }
 
-        if (distBetwnPlayerDrone < _followDist)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, _chicken.position, Time.deltaTime * _droneSpeed);
-        }
+        else if (_followDist < Vector2.Distance(transform.position, _chicken.position))
+            transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime * 20);
+        //transform.RotateAround(_droneSynthesizer.transform.position, Vector3.up, 20 * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+
         CharacterController playerScript = collision.gameObject.GetComponent<CharacterController>();
         if (playerScript != null)
         {
-            playerScript.Die();
+            playerScript.Die(); //if player comes inside the vicinity of the drone, they die and are moved to the last checkpoin
         }
     }
 }
