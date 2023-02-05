@@ -28,6 +28,8 @@ public class DroneActor : MonoBehaviour
         else if (_followDist < Vector2.Distance(transform.position, _chicken.position))
             transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime * 20);
         //transform.RotateAround(_droneSynthesizer.transform.position, Vector3.up, 20 * Time.deltaTime);
+        // MENACING ROTATION HAHAHHAHAH
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

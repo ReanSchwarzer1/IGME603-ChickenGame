@@ -2615,7 +2615,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3279,7 +3279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782373366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.24, y: 8.2, z: 0}
+  m_LocalPosition: {x: -10.83, y: 22.42, z: 0}
   m_LocalScale: {x: 1.5606251, y: 1.7584083, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8143,6 +8143,7 @@ GameObject:
   - component: {fileID: 1990526804}
   - component: {fileID: 1990526806}
   - component: {fileID: 1990526805}
+  - component: {fileID: 1990526807}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8191,7 +8192,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 580d02e206338d74aab6a142971e7f83, type: 3}
+  m_Sprite: {fileID: 1731233324, guid: 9caaa359a9d71d94b953df9878523541, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8272,7 +8273,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33, y: 0.34}
+    oldSize: {x: 0.29, y: 0.33}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -8281,6 +8282,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.30910912, y: 0.39363295}
   m_EdgeRadius: 0
+--- !u!95 &1990526807
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990526799}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 43f6419caea08cc429dff9d5ca9a8a99, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2019869374
 PrefabInstance:
   m_ObjectHideFlags: 0
