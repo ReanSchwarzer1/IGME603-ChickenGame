@@ -28,7 +28,7 @@ AnimationClip:
     - time: 0.25
       value: {fileID: 348376086, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
     - time: 0.33333334
-      value: {fileID: -1065138723, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
+      value: {fileID: 348376086, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
     - time: 0.41666666
       value: {fileID: -575778944, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
     - time: 0.5
@@ -58,7 +58,7 @@ AnimationClip:
     - {fileID: 812728772, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
     - {fileID: 930225151, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
     - {fileID: 348376086, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
-    - {fileID: -1065138723, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
+    - {fileID: 348376086, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
     - {fileID: -575778944, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
     - {fileID: -468970037, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
     - {fileID: 1537855156, guid: 47262e81a279c104aa78f83f11c74762, type: 3}
@@ -86,4 +86,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.41666666
+    functionName: ShootPea
+    data: 
+    objectReferenceParameter: {fileID: 7372880657075495234, guid: 6f7faca7563270d4d92ab794574ceaea, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
