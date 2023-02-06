@@ -123,8 +123,8 @@ MonoBehaviour:
   animatorScript: {fileID: 0}
   areaTrigger: {fileID: 7682394029832275240}
   peaObject: {fileID: 5221154478803470353, guid: 27d21df434faa364097aaef930bcc5fc, type: 3}
-  isFacingLeft: 1
-  isShooting: 0
+  peaLocation: {fileID: 3533321074315616266}
+  isFacingRight: 0
 --- !u!1 &3533321074315616261
 GameObject:
   m_ObjectHideFlags: 0

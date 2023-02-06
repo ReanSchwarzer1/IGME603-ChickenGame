@@ -7,6 +7,7 @@ public class PlantScript : MonoBehaviour
     [SerializeField] Animator animatorScript;
     [SerializeField] BoxCollider2D areaTrigger;
     [SerializeField] GameObject peaObject;
+    [SerializeField] Transform peaLocation;
     [SerializeField] bool isFacingRight;
     GameObject playerObject;
     private bool isShooting;
@@ -43,6 +44,7 @@ public class PlantScript : MonoBehaviour
 
     void ShootPea()
     {
+        Instantiate(peaObject, peaLocation.transform.position, Quaternion.identity);
         Debug.Log("The Pea has been shot");
     }
 
