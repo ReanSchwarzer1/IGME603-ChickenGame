@@ -21,23 +21,21 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// SFX played when the play button is clicked
     /// </summary>
-    [SerializeField] private AudioSource playSFX;
+    [SerializeField] private AudioClip playSFX;
     /// <summary>
     /// SFX played when the exit button is pressed
     /// </summary>
-    [SerializeField] private AudioSource exitSFX;
+    [SerializeField] private AudioClip exitSFX;
     /// <summary>
     /// SFX played when the options button is pressed
     /// </summary>
-    [SerializeField] private AudioSource optionSFX;
-    /// <summary>
-    /// Background music played on the menu
-    /// </summary>
-    [SerializeField] private AudioSource bgm;
+    [SerializeField] private AudioClip optionSFX;
+
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        bgm.loop = true;
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,20 +55,22 @@ public class MenuManager : MonoBehaviour
 
     public void PlayButtonClicked()
     {
-        playSFX.Play();
-        bgm.Pause();
+        audioSource.clip = playSFX;
+        audioSource.Play();
         SceneManager.LoadScene("Main Level Scene");
     }
 
     public void ExitButtonClicked()
     {
-        exitSFX.Play();
+        audioSource.clip = exitSFX;
+        audioSource.Play();
         Application.Quit();
     }
 
     public void OptionsButtonClicked()
     {
-        optionSFX.Play();
+        audioSource.clip = optionSFX;
+        audioSource.Play();
         mainMenu.SetActive(!mainMenu.activeInHierarchy);
         optionMenu.SetActive(!optionMenu.activeInHierarchy);
     }
