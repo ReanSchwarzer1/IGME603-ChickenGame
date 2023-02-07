@@ -57,7 +57,7 @@ public class MenuManager : MonoBehaviour
     {
         audioSource.clip = playSFX;
         audioSource.Play();
-        SceneManager.LoadScene("Main Level Scene");
+        SceneManager.LoadSceneAsync("Tile MAP Main Level Scene");
     }
 
     public void ExitButtonClicked()

@@ -19,6 +19,9 @@ public class CharacterController: MonoBehaviour
     Animator _chickenAnimator;
     Vector2 _moveInput;
 
+    [SerializeField] KeyCode pauseKey;
+    [SerializeField] GameObject pauseMenu;
+
     public Vector3 SpawnSpot { get; set; }
 
     private void Start()
@@ -29,17 +32,28 @@ public class CharacterController: MonoBehaviour
         SpawnSpot = transform.position;
         _moveInput = GetComponent<Vector2>();
         _chickenCC = GetComponent<CapsuleCollider2D>();
+        Time.timeScale = 1.0f;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // Check for the game being paused
+        if (Input.GetKeyDown(pauseKey))
         {
-            ShootEgg(); //Calling the shootegg() when the player clicks the left-mouse button
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+            Time.timeScale = (Time.timeScale > 0.0f ? 0.0f : 1.0f);
         }
+        // Only process input if the game isn't paused
+        if(Time.timeScale > 0)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShootEgg(); //Calling the shootegg() when the player clicks the left-mouse button
+            }
 
-        CameraFollow();
-        _chickenAnimator.SetBool("isJumping", false);
+            CameraFollow();
+            _chickenAnimator.SetBool("isJumping", false);
+        }
     }
 
     void OnMove()
@@ -105,6 +119,7 @@ public class CharacterController: MonoBehaviour
         // for now, just place the player back at the last checkpoint
         transform.position = SpawnSpot;
         _rb.velocity = Vector2.zero;
+        transform.rotation = Quaternion.identity;
     }
 
 }
