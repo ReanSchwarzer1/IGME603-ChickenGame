@@ -5,7 +5,7 @@ public class LoadLevel : MonoBehaviour
 {
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene("Main Level Scene");
+        SceneManager.LoadScene("Tile MAP Main Level Scene");
     }
 
     public void ExitScene()
