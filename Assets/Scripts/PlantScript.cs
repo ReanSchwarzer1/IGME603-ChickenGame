@@ -44,7 +44,10 @@ public class PlantScript : MonoBehaviour
 
     void ShootPea()
     {
-        Instantiate(peaObject, peaLocation.transform.position, Quaternion.identity);
+        GameObject pea = Instantiate(peaObject, peaLocation.transform.position, Quaternion.identity);
+        BulletScript peaLogic = pea.GetComponent<BulletScript>();
+        peaLogic.isMovingRight = isFacingRight;
+
         Debug.Log("The Pea has been shot");
     }
 

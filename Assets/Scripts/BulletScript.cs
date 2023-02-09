@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     GameObject playerObject;
-    bool isMovingRight;
+    public bool isMovingRight;
     [SerializeField] float bulletSpeed;
     [SerializeField] float bulletLife;  //life of the bullet in seconds. After this time has passed, it will dissapear
 
