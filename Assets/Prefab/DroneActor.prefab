@@ -101,6 +101,7 @@ MonoBehaviour:
   _followDist: 10
   _chicken: {fileID: 0}
   _droneSpeed: 3
+  _droneSynthesizer: {fileID: 0}
 --- !u!61 &9123363481576529091
 BoxCollider2D:
   m_ObjectHideFlags: 0

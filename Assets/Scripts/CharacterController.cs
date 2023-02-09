@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class CharacterController: MonoBehaviour
@@ -25,17 +26,20 @@ public class CharacterController: MonoBehaviour
     [SerializeField] KeyCode pauseKey;
     [SerializeField] GameObject pauseMenu;
 
-    public Vector3 SpawnSpot { get; set; }
-
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _chickenAnimator = GetComponent<Animator>();
         _chickenRenderer = GetComponent<SpriteRenderer>();
-        SpawnSpot = transform.position;
-        _moveInput = GetComponent<Vector2>();
+        //_moveInput = GetComponent<Vector2>();
         _chickenCC = GetComponent<BoxCollider2D>();
         Time.timeScale = 1.0f;
+
+        Vector3 spawnPoint = GameObject.Find("Checkpoint Tracker").GetComponent<CheckpointTracker>().SpawnPoint;
+        if(spawnPoint != Vector3.zero)
+        {
+            transform.position = spawnPoint;
+        }
     }
 
     private void Update()
@@ -55,7 +59,7 @@ public class CharacterController: MonoBehaviour
             }
 
             CameraFollow();
-            _chickenAnimator.SetBool("isJumping", false);
+            //_chickenAnimator.SetBool("isJumping", false);
         }
     }
 
@@ -88,7 +92,7 @@ public class CharacterController: MonoBehaviour
 
         //if (!_chickenCC.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
-        _chickenAnimator.SetBool("isJumping", true);
+        //_chickenAnimator.SetBool("isJumping", true);
     }
 
     private void ShootEgg()
@@ -122,12 +126,10 @@ public class CharacterController: MonoBehaviour
         _cameraTransform.rotation = Quaternion.identity;
     }
 
-        public void Die()
+    public void Die()
     {
-        // for now, just place the player back at the last checkpoint
-        transform.position = SpawnSpot;
-        _rb.velocity = Vector2.zero;
-        transform.rotation = Quaternion.identity;
+        // restart the scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

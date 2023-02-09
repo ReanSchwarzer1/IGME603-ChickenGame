@@ -9,7 +9,7 @@ public class CheckpointScript : MonoBehaviour
         CharacterController playerScript = collision.gameObject.GetComponent<CharacterController>();
         if (playerScript != null)
         {
-            playerScript.SpawnSpot = transform.position;
+            GameObject.Find("Checkpoint Tracker").GetComponent<CheckpointTracker>().SpawnPoint = gameObject.transform.position;
         }
     }
 }
