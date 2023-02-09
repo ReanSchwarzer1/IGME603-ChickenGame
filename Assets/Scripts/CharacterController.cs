@@ -128,6 +128,7 @@ public class CharacterController: MonoBehaviour
         transform.position = SpawnSpot;
         _rb.velocity = Vector2.zero;
         transform.rotation = Quaternion.identity;
+        _rb.angularVelocity = 0.0f;
     }
 
 }
