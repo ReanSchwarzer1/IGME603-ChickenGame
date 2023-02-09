@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - EnemyTrigger
+  - Bullet
   layers:
   - Default
   - TransparentFX

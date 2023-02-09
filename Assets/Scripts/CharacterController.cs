@@ -114,7 +114,7 @@ public class CharacterController: MonoBehaviour
         _cameraTransform.rotation = Quaternion.identity;
     }
 
-    public void Die()
+        public void Die()
     {
         // for now, just place the player back at the last checkpoint
         transform.position = SpawnSpot;
