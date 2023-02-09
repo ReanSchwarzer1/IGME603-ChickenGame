@@ -15,9 +15,12 @@ public class CharacterController: MonoBehaviour
     private float _cameraSpeed = 2f;
     Rigidbody2D _rb;
     SpriteRenderer _chickenRenderer;
-    CapsuleCollider2D _chickenCC;
+    BoxCollider2D _chickenCC;
     Animator _chickenAnimator;
     Vector2 _moveInput;
+
+    [SerializeField] float launchMin;
+    [SerializeField] float launchMax;
 
     [SerializeField] KeyCode pauseKey;
     [SerializeField] GameObject pauseMenu;
@@ -31,7 +34,7 @@ public class CharacterController: MonoBehaviour
         _chickenRenderer = GetComponent<SpriteRenderer>();
         SpawnSpot = transform.position;
         _moveInput = GetComponent<Vector2>();
-        _chickenCC = GetComponent<CapsuleCollider2D>();
+        _chickenCC = GetComponent<BoxCollider2D>();
         Time.timeScale = 1.0f;
     }
 
@@ -75,10 +78,15 @@ public class CharacterController: MonoBehaviour
     private void ApplyJumpForceOppToShootDir(GameObject projectile, Vector2 direction)
     {
         projectile.GetComponent<Rigidbody2D>().velocity = direction * _jumpForce; //applying force to the rigidbody to make the player jump
-        _rb.velocity = (_jumpForce * -direction); //the rigibody will jump in the direct opposite direction from where the (mousepos var / direction the player clicks in) is
+        Vector2 velocity = (_jumpForce * -direction);
+        float velocityMag = velocity.magnitude;
+        velocityMag = Mathf.Clamp(velocityMag, launchMin, launchMax);
+        _rb.velocity = velocity.normalized * velocityMag;
+
+        //_rb.velocity = clampedVel; //the rigibody will jump in the direct opposite direction from where the (mousepos var / direction the player clicks in) is
 
 
-        if (!_chickenCC.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
+        //if (!_chickenCC.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
         _chickenAnimator.SetBool("isJumping", true);
     }

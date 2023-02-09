@@ -118,7 +118,6 @@ public class ScientistEnemy : MonoBehaviour
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
         InstanciateBullet(direction);
-        Debug.Log(direction);
         FlipScientist(direction);
     }
 
