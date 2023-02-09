@@ -53,7 +53,7 @@ public class ScientistEnemy : MonoBehaviour
     private void FlipScientist(Vector2 direction)
     {
         //code to flip the scientists towards the side they are jumping in / flip the chicken opposite the side they are throwing the eggs
-        if (direction.x > 0)
+        if (direction.x < 0)
         {
             scientistRenderer.flipX = true;
         }
@@ -87,6 +87,14 @@ public class ScientistEnemy : MonoBehaviour
     void Patrol()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
+        if(targetPosition.x < this.transform.position.x)
+        {
+            scientistRenderer.flipX = true;
+        }
+        else
+        {
+            scientistRenderer.flipX = false;
+        }
         if (transform.position == targetPosition)
         {
             if (targetPosition == patrolMax)
@@ -110,6 +118,7 @@ public class ScientistEnemy : MonoBehaviour
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
         InstanciateBullet(direction);
+        Debug.Log(direction);
         FlipScientist(direction);
     }
 
