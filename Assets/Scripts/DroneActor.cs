@@ -21,12 +21,20 @@ public class DroneActor : MonoBehaviour
         if (_followDist > Vector2.Distance(transform.position, _chicken.position))
         {
             transform.position = Vector2.MoveTowards(transform.position, _chicken.position, Time.deltaTime * _droneSpeed); //drone wil go towards the playe with a set speed
-            transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime * 5); // MENACING ROTATION HAHAHHAHAH
+            //transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime * 5); // MENACING ROTATION HAHAHHAHAH
+            if(transform.position.x - _chicken.position.x < 0) //Keep drone always head to players
+            {
+                transform.localScale = new Vector3(-2, 2, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(2, 2, 1);
+            }
 
         }
 
-        else if (_followDist < Vector2.Distance(transform.position, _chicken.position))
-            transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime * 20);
+        //else if (_followDist < Vector2.Distance(transform.position, _chicken.position))
+        //    transform.Rotate(new Vector3(0, 0, 100) * Time.deltaTime * 20);
         //transform.RotateAround(_droneSynthesizer.transform.position, Vector3.up, 20 * Time.deltaTime);
         // MENACING ROTATION HAHAHHAHAH
 
