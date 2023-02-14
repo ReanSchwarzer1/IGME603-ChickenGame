@@ -42,6 +42,7 @@ public class CharacterController: MonoBehaviour
         if(spawnPoint != Vector3.zero)
         {
             transform.position = spawnPoint;
+            _cameraTransform.position = new Vector3(spawnPoint.x, spawnPoint.y, _cameraTransform.position.z);
         }
     }
 
