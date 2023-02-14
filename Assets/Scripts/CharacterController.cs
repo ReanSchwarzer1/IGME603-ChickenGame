@@ -14,11 +14,14 @@ public class CharacterController: MonoBehaviour
     private Transform _cameraTransform;
     [SerializeField]
     private float _cameraSpeed = 2f;
+    [SerializeField]
+    private float SHOOT_COOLDOWN;
     Rigidbody2D _rb;
     SpriteRenderer _chickenRenderer;
     BoxCollider2D _chickenCC;
     Animator _chickenAnimator;
     Vector2 _moveInput;
+    private float _cooldown;
 
     [SerializeField] float launchMin;
     [SerializeField] float launchMax;
@@ -53,13 +56,18 @@ public class CharacterController: MonoBehaviour
         // Only process input if the game isn't paused
         if(Time.timeScale > 0)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (_cooldown <= 0 && Input.GetMouseButtonDown(0))
             {
                 ShootEgg(); //Calling the shootegg() when the player clicks the left-mouse button
+                _cooldown = SHOOT_COOLDOWN;
             }
 
             CameraFollow();
             //_chickenAnimator.SetBool("isJumping", false);
+
+            if(_cooldown > 0) {
+                _cooldown -= Time.deltaTime;
+            }
         }
     }
 
@@ -107,14 +115,16 @@ public class CharacterController: MonoBehaviour
     private void FlipChicken(Vector2 direction)
     {
         //code to flip the chicken towards the side they are jumping in / flip the chicken opposite the side they are throwing the eggs
-        if (direction.x > 0)
-        {
-            _chickenRenderer.flipX = false;
-        }
-        else
-        {
-            _chickenRenderer.flipX = true;
-        }
+        //if (direction.x > 0)
+        //{
+        //    _chickenRenderer.flipX = false;
+        //}
+        //else
+        //{
+        //    _chickenRenderer.flipX = true;
+        //}
+        Vector2 oppositeDirection = -direction;
+        _rb.rotation = (float)(Math.Atan2(direction.y, direction.x) / Math.PI) * 180 + 90;
     }
     private void CameraFollow()
     {
