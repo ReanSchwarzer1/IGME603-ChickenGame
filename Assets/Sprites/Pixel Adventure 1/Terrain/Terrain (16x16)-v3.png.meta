@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -3117,9 +3117,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Terrain (16x16)-v3_53: -1209987873
       Terrain (16x16)-v3_90: 248151396
-      Terrain (16x16)-v3_139: 607164276
+      Terrain (16x16)-v3_53: -1209987873
       Terrain (16x16)-v3_121: -340283956
       Terrain (16x16)-v3_16: -1806345631
       Terrain (16x16)-v3_135: -959573996
@@ -3128,6 +3127,7 @@ TextureImporter:
       Terrain (16x16)-v3_136: -845938620
       Terrain (16x16)-v3_68: -1243682248
       Terrain (16x16)-v3_118: -1174621077
+      Terrain (16x16)-v3_139: 607164276
       Terrain (16x16)-v3_6: -20579913
       Terrain (16x16)-v3_105: -617263495
       Terrain (16x16)-v3_70: 2068853420
@@ -3150,14 +3150,14 @@ TextureImporter:
       Terrain (16x16)-v3_123: -1831238309
       Terrain (16x16)-v3_46: 970858927
       Terrain (16x16)-v3_30: 1270914965
+      Terrain (16x16)-v3_98: -562149672
+      Terrain (16x16)-v3_93: 25531161
       Terrain (16x16)-v3_4: -734998062
       Terrain (16x16)-v3_69: 1096719545
-      Terrain (16x16)-v3_93: 25531161
-      Terrain (16x16)-v3_81: 288356849
-      Terrain (16x16)-v3_98: -562149672
       Terrain (16x16)-v3_83: -556333883
       Terrain (16x16)-v3_114: -1574830443
       Terrain (16x16)-v3_86: -1117140421
+      Terrain (16x16)-v3_81: 288356849
       Terrain (16x16)-v3_29: 1729786069
       Terrain (16x16)-v3_141: -1939570052
       Terrain (16x16)-v3_138: 1235080879

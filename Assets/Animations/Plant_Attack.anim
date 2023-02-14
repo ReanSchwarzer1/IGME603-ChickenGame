@@ -90,7 +90,7 @@ AnimationClip:
   - time: 0.41666666
     functionName: ShootPea
     data: 
-    objectReferenceParameter: {fileID: 7372880657075495234, guid: 6f7faca7563270d4d92ab794574ceaea, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
