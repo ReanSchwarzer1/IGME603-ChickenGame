@@ -23,11 +23,17 @@ public class CharacterController: MonoBehaviour
     Vector2 _moveInput;
     private float _cooldown;
 
+
     [SerializeField] float launchMin;
     [SerializeField] float launchMax;
 
     [SerializeField] KeyCode pauseKey;
     [SerializeField] GameObject pauseMenu;
+
+    public Texture2D _mouseCursor;
+
+    Vector2 _hotSpot = new Vector2(0, 0);
+    CursorMode _mouseMode = CursorMode.Auto;
 
     private void Start()
     {
@@ -44,6 +50,9 @@ public class CharacterController: MonoBehaviour
             transform.position = spawnPoint;
             _cameraTransform.position = new Vector3(spawnPoint.x, spawnPoint.y, _cameraTransform.position.z);
         }
+
+        Cursor.SetCursor(_mouseCursor, _hotSpot, _mouseMode); //secursor function changes the look of the cursor in-game
+
     }
 
     private void Update()
