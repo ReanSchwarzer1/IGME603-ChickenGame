@@ -105,8 +105,12 @@ MonoBehaviour:
   _jumpForce: 50
   _cameraTransform: {fileID: 341194473072412287}
   _cameraSpeed: 2
+  SHOOT_COOLDOWN: 0
+  launchMin: 0
+  launchMax: 0
   pauseKey: 0
   pauseMenu: {fileID: 0}
+  _mouseCursor: {fileID: 2800000, guid: 7a04a25d6c19e614f822429a5e9dd668, type: 3}
 --- !u!61 &341194472666593705
 BoxCollider2D:
   m_ObjectHideFlags: 0
