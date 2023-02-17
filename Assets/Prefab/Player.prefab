@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90df3d160d91cd544bb1f903565f696d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eggPrefab: {fileID: 7277860384438004515, guid: 0232ec4700183d8409b8447727f8ac5a, type: 3}
+  _eggPrefab: {fileID: 7277860384438004515, guid: 9ab5a6c66b443534f931e0a3935310d0, type: 3}
   _jumpForce: 50
   _cameraTransform: {fileID: 341194473072412287}
   _cameraSpeed: 2
