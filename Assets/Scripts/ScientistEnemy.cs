@@ -26,7 +26,9 @@ public class ScientistEnemy : MonoBehaviour
     private Vector3 patrolMin;
     private Vector3 patrolMax;
 
+    private Vector3 playerPos;
     SpriteRenderer scientistRenderer;
+    
 
 
     void Start()
@@ -45,8 +47,7 @@ public class ScientistEnemy : MonoBehaviour
     void PatrolMinMax() // to adjus values for the patrolling distance for the scientis enemies on the plaforms
     {
         startingPosition = transform.position;
-        patrolMin = startingPosition - Vector3.right * patrolRange / 2;
-        patrolMax = startingPosition + Vector3.right * patrolRange / 2;
+        (patrolMin, patrolMax) = (startingPosition - Vector3.right * patrolRange / 2, startingPosition + Vector3.right * patrolRange / 2);
         targetPosition = patrolMax;
     }
 
@@ -65,12 +66,13 @@ public class ScientistEnemy : MonoBehaviour
 
     void ShootBehaviours()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        playerPos = player.transform.position;
+        float distanceToPlayer = Vector3.Distance(transform.position, playerPos);
         if (distanceToPlayer <= shootRange)
         {
             IfShoot();
         }
-        else
+        else if (distanceToPlayer > shootRange)
         {
             shooting = false;
             patrolling = true;
@@ -86,7 +88,8 @@ public class ScientistEnemy : MonoBehaviour
 
     void Patrol()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
+        float timer = Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, patrolSpeed * timer);
         if(targetPosition.x < this.transform.position.x)
         {
             scientistRenderer.flipX = true;
@@ -116,16 +119,18 @@ public class ScientistEnemy : MonoBehaviour
 
     void ShootAtPlayer()
     {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
+        playerPos = player.transform.position;
+        Vector3 direction = (playerPos - transform.position).normalized;
         InstanciateBullet(direction);
         FlipScientist(direction);
     }
 
     void IfShoot()
     {
+        float timer = Time.deltaTime;
         shooting = true;
         patrolling = false;
-        shootTimer += Time.deltaTime;
+        shootTimer += timer;
         if (shootTimer >= shootInterval)
         {
             ShootAtPlayer();
