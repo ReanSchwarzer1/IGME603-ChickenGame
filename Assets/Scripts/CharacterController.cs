@@ -57,6 +57,7 @@ public class CharacterController: MonoBehaviour
 
     private void Update()
     {
+        float timer = Time.deltaTime;
         // Check for the game being paused
         if (Input.GetKeyDown(pauseKey))
         {
@@ -76,7 +77,7 @@ public class CharacterController: MonoBehaviour
             //_chickenAnimator.SetBool("isJumping", false);
 
             if(_cooldown > 0) {
-                _cooldown -= Time.deltaTime;
+                _cooldown -= timer;
             }
         }
     }
@@ -138,10 +139,11 @@ public class CharacterController: MonoBehaviour
     }
     private void CameraFollow()
     {
+        float timer = Time.deltaTime;
         _cameraTransform.position = Vector3.Lerp(
             _cameraTransform.position,
             new Vector3(transform.position.x, transform.position.y,
-            _cameraTransform.position.z), Time.deltaTime * _cameraSpeed);
+            _cameraTransform.position.z), timer * _cameraSpeed);
 
         _cameraTransform.rotation = Quaternion.identity;
     }
