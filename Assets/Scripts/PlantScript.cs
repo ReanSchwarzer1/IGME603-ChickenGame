@@ -25,6 +25,8 @@ public class PlantScript : MonoBehaviour
     //a bool to determine whether the plant is current shooting peas or not
     private bool isShooting;
 
+    private AudioSource src;
+
     //enum states for enemy states, either walking or aggro'd on the player
     enum AIStates
     {
@@ -46,6 +48,7 @@ public class PlantScript : MonoBehaviour
             gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y, 1);
         }
         playerObject = GameObject.FindGameObjectWithTag("Player");
+        src = this.GetComponent<AudioSource>(); // Get the audio source of the gameobject
     }
 
     // Update is called once per frame
@@ -132,6 +135,7 @@ public class PlantScript : MonoBehaviour
         GameObject pea = Instantiate(peaObject, peaLocation.transform.position, Quaternion.identity);
         BulletScript peaLogic = pea.GetComponent<BulletScript>();
         peaLogic.isMovingRight = isFacingRight;
+        src.Play();
     }
 
     //have a invisible trigger extending out in front of the pea shooter

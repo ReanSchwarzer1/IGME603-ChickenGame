@@ -30,6 +30,8 @@ public class CharacterController: MonoBehaviour
     [SerializeField] KeyCode pauseKey;
     [SerializeField] GameObject pauseMenu;
 
+    private AudioSource src;
+
     public Texture2D _mouseCursor;
 
     Vector2 _hotSpot = new Vector2(0, 0);
@@ -52,7 +54,7 @@ public class CharacterController: MonoBehaviour
         }
 
         Cursor.SetCursor(_mouseCursor, _hotSpot, _mouseMode); //secursor function changes the look of the cursor in-game
-
+        src = this.GetComponent<AudioSource>(); // Get the audio source of the gameobject
     }
 
     private void Update()
@@ -122,6 +124,7 @@ public class CharacterController: MonoBehaviour
         ApplyJumpForceOppToShootDir(projectile, direction);
 
         FlipChicken(direction);
+        src.Play();
     }
     private void FlipChicken(Vector2 direction)
     {

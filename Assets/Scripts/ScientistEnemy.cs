@@ -12,6 +12,8 @@ public class ScientistEnemy : MonoBehaviour
     [SerializeField] private float shootTimer = 0f;
     [SerializeField] private float patrolRange = 10f;
 
+    private AudioSource src;
+
    // [SerializeField] private GameObject[] points;
 
     // index for current waypoint
@@ -35,6 +37,7 @@ public class ScientistEnemy : MonoBehaviour
     {
         scientistRenderer = GetComponent<SpriteRenderer>(); 
         PatrolMinMax();
+        src = this.GetComponent<AudioSource>(); // Get the audio source of the gameobject
     }
 
     void Update()
@@ -123,6 +126,7 @@ public class ScientistEnemy : MonoBehaviour
         Vector3 direction = (playerPos - transform.position).normalized;
         InstanciateBullet(direction);
         FlipScientist(direction);
+        src.Play();
     }
 
     void IfShoot()
