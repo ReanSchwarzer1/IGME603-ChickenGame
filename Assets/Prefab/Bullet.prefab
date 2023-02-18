@@ -115,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovingRight: 0
-  bulletSpeed: 0.015
+  bulletSpeed: 15
   bulletLife: 5

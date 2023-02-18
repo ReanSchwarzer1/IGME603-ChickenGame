@@ -23,7 +23,7 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         //move bullet
-        transform.position += new Vector3(bulletSpeed,0,0);
+        transform.position += new Vector3(bulletSpeed * Time.deltaTime,0,0);
 
         if(bulletLife <= 0)
         {
