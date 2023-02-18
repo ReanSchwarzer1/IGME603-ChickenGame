@@ -11,4 +11,7 @@ https://opengameart.org/content/game-game
 https://pixelfrog-assets.itch.io/pixel-adventure-1 
 https://pixelfrog-assets.itch.io/pixel-adventure-2
 https://deep-fold.itch.io/space-background-generator
+https://opengameart.org/content/3-pop-sounds
+https://opengameart.org/content/sci-fi-laser-fire-sfx
+https://opengameart.org/content/seamless-energy-emission-loop
 
