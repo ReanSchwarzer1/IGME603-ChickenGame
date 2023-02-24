@@ -94,14 +94,16 @@ public class ScientistEnemy : MonoBehaviour
 
         switch (distanceToPlayer <= shootRange)
         {
-            case true:
-                IfShoot();
-                break;
-
             case false:
                 shooting = false; //setting bools to false and true respectively
                 patrolling = true;
                 break;
+                
+            case true:
+                IfShoot();
+                break;
+
+
         }
 
         if (patrolling)
@@ -123,14 +125,16 @@ public class ScientistEnemy : MonoBehaviour
 
         switch (targetPosition.x < playerPosit.x)
         {
-            case true:
-                scientistRenderer.flipX = true;
-                scientistRenderer.color = Color.red;
-                break;
             case false:
                 scientistRenderer.flipX = false;
                 scientistRenderer.color = Color.cyan;
                 break;
+                
+            case true:
+                scientistRenderer.flipX = true;
+                scientistRenderer.color = Color.red;
+                break;
+
         }
 
         if (transform.position == targetPosition)
