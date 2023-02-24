@@ -28,6 +28,8 @@ public class ScientistEnemy : MonoBehaviour
     private Vector3 patrolMin;
     private Vector3 patrolMax;
 
+    public Vector3 rightPos;
+
     private Vector3 playerPos;
     SpriteRenderer scientistRenderer;
     
@@ -43,15 +45,33 @@ public class ScientistEnemy : MonoBehaviour
     void Update()
     {
 
-
         ShootBehaviours();
     }
 
     void PatrolMinMax() // to adjus values for the patrolling distance for the scientis enemies on the plaforms
     {
+        float timer = Time.deltaTime;
+        targetPosition = Vector2.MoveTowards(transform.position, patrolMax, timer * speed);
         startingPosition = transform.position;
-        (patrolMin, patrolMax) = (startingPosition - Vector3.right * patrolRange / 2, startingPosition + Vector3.right * patrolRange / 2);
+        rightPos = Vector3.right;
+        (patrolMin, patrolMax) = (startingPosition - rightPos * patrolRange / 2, startingPosition + rightPos * patrolRange / 2);
         targetPosition = patrolMax;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            collision.gameObject.transform.SetParent(transform);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            collision.gameObject.transform.SetParent(null);
+        }
     }
 
     private void FlipScientist(Vector2 direction)
@@ -71,14 +91,17 @@ public class ScientistEnemy : MonoBehaviour
     {
         playerPos = player.transform.position;
         float distanceToPlayer = Vector3.Distance(transform.position, playerPos);
-        if (distanceToPlayer <= shootRange)
+
+        switch (distanceToPlayer <= shootRange)
         {
-            IfShoot();
-        }
-        else if (distanceToPlayer > shootRange)
-        {
-            shooting = false;
-            patrolling = true;
+            case true:
+                IfShoot();
+                break;
+
+            case false:
+                shooting = false; //setting bools to false and true respectively
+                patrolling = true;
+                break;
         }
 
         if (patrolling)
@@ -91,27 +114,40 @@ public class ScientistEnemy : MonoBehaviour
 
     void Patrol()
     {
+
+        /* https://stackoverflow.com/questions/68026399/enemy-not-moving */
+
         float timer = Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, patrolSpeed * timer);
-        if(targetPosition.x < this.transform.position.x)
+        Vector3 playerPosit = this.transform.position;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, 5f * timer);
+
+        switch (targetPosition.x < playerPosit.x)
         {
-            scientistRenderer.flipX = true;
+            case true:
+                scientistRenderer.flipX = true;
+                scientistRenderer.color = Color.red;
+                break;
+            case false:
+                scientistRenderer.flipX = false;
+                scientistRenderer.color = Color.cyan;
+                break;
         }
-        else
-        {
-            scientistRenderer.flipX = false;
-        }
+
         if (transform.position == targetPosition)
         {
-            if (targetPosition == patrolMax)
+            switch (targetPosition == patrolMax)
             {
-                targetPosition = patrolMin;
-            }
-            else
-            {
-                targetPosition = patrolMax;
+                case true:
+                    targetPosition = patrolMin;
+                    break;
+                case false:
+                    targetPosition = patrolMax;
+                    break;
             }
         }
+
+
+
     }
 
     void InstanciateBullet(Vector3 direction)
@@ -122,11 +158,11 @@ public class ScientistEnemy : MonoBehaviour
 
     void ShootAtPlayer()
     {
-        playerPos = player.transform.position;
-        Vector3 direction = (playerPos - transform.position).normalized;
-        InstanciateBullet(direction);
-        FlipScientist(direction);
-        src.Play();
+            playerPos = player.transform.position;
+            Vector3 direction = (playerPos - transform.position).normalized;
+            InstanciateBullet(direction);
+            FlipScientist(direction);
+            src.Play();
     }
 
     void IfShoot()
